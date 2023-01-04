@@ -11,7 +11,6 @@ import { ForgetPassword } from './components/auth/ForgetPassword';
 import { ConfirmPassword } from './components/auth/ConfirmPassword';
 import { pathNames } from './config/path-names';
 
-console.log(pathNames.AUTH_SIGN_IN);
 const router = createBrowserRouter([
   {
     path: '/',
