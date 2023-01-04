@@ -9,30 +9,32 @@ import { SignUp } from './components/auth/SignUp';
 import { EmailVerification } from './components/auth/EmailVerification';
 import { ForgetPassword } from './components/auth/ForgetPassword';
 import { ConfirmPassword } from './components/auth/ConfirmPassword';
+import { pathNames } from './config/path-names';
 
+console.log(pathNames.AUTH_SIGN_IN);
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
       {
-        path: 'auth/signin',
+        path: pathNames.AUTH_SIGN_IN,
         element: <SignIn />,
       },
       {
-        path: 'auth/signup',
+        path: pathNames.AUTH_SIGN_UP,
         element: <SignUp />,
       },
       {
-        path: 'auth/verification',
+        path: pathNames.AUTH_VEFIFICATION,
         element: <EmailVerification />,
       },
       {
-        path: 'auth/forget-password',
+        path: pathNames.AUTH_FORGET_PASSWORD,
         element: <ForgetPassword />,
       },
       {
-        path: 'auth/confirm-password',
+        path: pathNames.AUTH_CONFIRM_PASSWORD,
         element: <ConfirmPassword />,
       },
     ],
