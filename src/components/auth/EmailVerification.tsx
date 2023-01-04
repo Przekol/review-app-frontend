@@ -4,48 +4,52 @@ import { Title } from '../form/Title';
 import { Submit } from '../form/Submit';
 
 const OTP_LENGTH = 6;
-let currentOTPIndex: number;
 
 export const EmailVerification = () => {
   const [otp, setOtp] = useState<string[]>(new Array(OTP_LENGTH).fill(''));
   const [activeOtpIndex, setActiveOtpIndex] = useState<number>(0);
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRefs = useRef<HTMLInputElement[]>([]);
 
   const focusNextInputField = (index: number) => {
     setActiveOtpIndex(index + 1);
   };
 
   const focusPrevInputField = (index: number) => {
-    let nextIndex: number;
-    const diff = index - 1;
-    nextIndex = diff !== 0 ? diff : 0;
-    setActiveOtpIndex(nextIndex);
+    if (index > 0) {
+      setActiveOtpIndex(index - 1);
+      inputRefs.current[index - 1].focus();
+    }
   };
 
   const handleOtpChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
+    const currentInputIndex = inputRefs.current.indexOf(target);
 
     if (!value) {
-      focusPrevInputField(currentOTPIndex);
+      focusPrevInputField(currentInputIndex);
     } else {
-      focusNextInputField(currentOTPIndex);
+      focusNextInputField(currentInputIndex);
     }
     setOtp((prevOtp) => {
       const newOtp = [...prevOtp];
-      newOtp[currentOTPIndex] = value.substring(value.length - 1, value.length);
+      newOtp[currentInputIndex] = value.substring(value.length - 1, value.length);
       return [...newOtp];
     });
   };
-  const handleKeyDown = ({ key }: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-    currentOTPIndex = index;
-    if (key === 'Backspace') {
-      focusPrevInputField(currentOTPIndex);
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace') {
+      const currentInputIndex = inputRefs.current.indexOf(e.currentTarget);
+      if (otp[currentInputIndex] !== '') {
+        focusPrevInputField(currentInputIndex + 1);
+      } else {
+        focusPrevInputField(currentInputIndex);
+      }
     }
   };
 
   useEffect(() => {
-    inputRef.current?.focus();
+    inputRefs.current[activeOtpIndex]?.focus();
   }, [activeOtpIndex]);
 
   return (
@@ -60,11 +64,11 @@ export const EmailVerification = () => {
             {otp.map((_, index) => {
               return (
                 <input
-                  ref={activeOtpIndex === index ? inputRef : null}
+                  ref={(input) => input && (inputRefs.current[index] = input)}
                   key={index}
                   value={otp[index] || ''}
-                  onChange={(e) => handleOtpChange(e)}
-                  onKeyDown={(e) => handleKeyDown(e, index)}
+                  onChange={handleOtpChange}
+                  onKeyDown={handleKeyDown}
                   type="number"
                   min="0"
                   max="9"
