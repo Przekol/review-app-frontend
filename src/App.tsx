@@ -1,12 +1,14 @@
 import React from 'react';
 import { Navbar } from './components/user/Navbar';
-import { SignUp } from './components/auth/SignUp';
+import { Outlet } from 'react-router-dom';
 
 export function App() {
   return (
     <>
       <Navbar />
-      <SignUp />
+      <div id="detail">
+        <Outlet />
+      </div>
     </>
   );
 }
