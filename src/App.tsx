@@ -5,8 +5,10 @@ import { Outlet } from 'react-router-dom';
 export function App() {
   return (
     <>
-      {<Navbar />}
-      <div id="detail">{<Outlet />}</div>
+      <Navbar />
+      <div id="detail">
+        <Outlet />
+      </div>
     </>
   );
 }
