@@ -1,1 +1,1 @@
-export * from './path-names';
+export * from './paths-names';

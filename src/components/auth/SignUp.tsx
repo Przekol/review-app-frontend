@@ -4,7 +4,7 @@ import { Title } from '../form/Title';
 import { FormInput } from '../form/FormInput';
 import { Submit } from '../form/Submit';
 import { CustomLink } from '../CustomLink';
-import { PathNames } from '../../config';
+import { PathsNames } from '../../config';
 
 export const SignUp = () => {
   return (
@@ -17,8 +17,8 @@ export const SignUp = () => {
           <FormInput name="password" placeholder="*********" label="Password" type="password" />
           <Submit value="Sign Up" />
           <div className="flex justify-between">
-            <CustomLink to={PathNames.AUTH_FORGET_PASSWORD}>Forget password</CustomLink>
-            <CustomLink to={PathNames.AUTH_SIGN_IN}>Sign in</CustomLink>
+            <CustomLink to={PathsNames.AUTH_FORGET_PASSWORD}>Forget password</CustomLink>
+            <CustomLink to={PathsNames.AUTH_SIGN_IN}>Sign in</CustomLink>
           </div>
         </form>
       </Container>
