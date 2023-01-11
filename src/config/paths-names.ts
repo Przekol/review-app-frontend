@@ -1,4 +1,4 @@
-export enum PathNames {
+export enum PathsNames {
   AUTH_SIGN_IN = '/auth/sign-in',
   AUTH_SIGN_UP = '/auth/sign-up',
   AUTH_VERIFICATION = '/auth/verification',
