@@ -10,6 +10,7 @@ import { EmailVerification } from './components/auth/EmailVerification';
 import { ForgetPassword } from './components/auth/ForgetPassword';
 import { ConfirmPassword } from './components/auth/ConfirmPassword';
 import { PathsNames } from './config';
+import { ThemeProvider } from './context/ThemeProvider';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +44,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>,
 );
 
