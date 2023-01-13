@@ -12,7 +12,7 @@ interface Props {
 export const ThemeProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(themeReducer, initialState);
   const toggleTheme = () => {
-    const newTheme = state.theme === defaultTheme.theme ? Theme.DARK : defaultTheme.theme;
+    const newTheme = state.theme === defaultTheme.theme ? Theme.LIGHT : defaultTheme.theme;
     dispatch({ type: 'SET_THEME', payload: newTheme });
   };
 
