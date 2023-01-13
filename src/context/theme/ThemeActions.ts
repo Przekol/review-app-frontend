@@ -1,7 +1,7 @@
 import { Theme, ThemeState } from '../../types';
 
 export const defaultTheme: ThemeState = {
-  theme: Theme.LIGHT,
+  theme: Theme.DARK,
 };
 
 export const getThemeFromLocalStorage = (): Theme => {
