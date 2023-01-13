@@ -2,13 +2,11 @@ import React from 'react';
 import { BsFillSunFill } from 'react-icons/bs';
 import { Container } from '../Container';
 import { Link } from 'react-router-dom';
-import { PathsNames } from '../../config';
+import { PageRouter } from '../../config';
 import { useTheme } from '../../hooks/useTheme';
 
 export const Navbar = () => {
-  const theme = useTheme();
-  if (!theme) return null;
-  const { toggleTheme } = theme;
+  const { toggleTheme } = useTheme();
 
   return (
     <div className="bg-secondary drop-shadow-sm shadow-gray-500">
@@ -31,7 +29,7 @@ export const Navbar = () => {
               />
             </li>
             <li>
-              <Link className="text-white font-semibold text-lg" to={PathsNames.AUTH_SIGN_IN}>
+              <Link className="text-white font-semibold text-lg" to={PageRouter.AUTH_SIGN_IN}>
                 Login
               </Link>
             </li>
