@@ -1,1 +1,1 @@
-export * from './paths-names';
+export * from './page-router';
