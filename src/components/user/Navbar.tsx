@@ -4,15 +4,9 @@ import { Container } from '../Container';
 import { Link } from 'react-router-dom';
 import { PageRouter } from '../../config';
 import { useTheme } from '../../hooks/useTheme';
-import { setTheme } from '../../context/theme';
 
 export const Navbar = () => {
-  const { state, dispatch } = useTheme();
-
-  const toggleTheme = () => {
-    const newTheme = setTheme(state.theme);
-    dispatch({ type: 'SET_THEME', payload: newTheme });
-  };
+  const { toggleTheme } = useTheme();
 
   return (
     <div className="bg-secondary drop-shadow-sm shadow-gray-500">
