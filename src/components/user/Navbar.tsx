@@ -2,9 +2,12 @@ import React from 'react';
 import { BsFillSunFill } from 'react-icons/bs';
 import { Container } from '../Container';
 import { Link } from 'react-router-dom';
-import { PathsNames } from '../../config';
+import { PageRouter } from '../../config';
+import { useTheme } from '../../hooks/useTheme';
 
 export const Navbar = () => {
+  const { toggleTheme } = useTheme();
+
   return (
     <div className="bg-secondary drop-shadow-sm shadow-gray-500">
       <Container className="p-2">
@@ -14,7 +17,7 @@ export const Navbar = () => {
           </Link>
           <ul className="flex items-center space-x-4">
             <li>
-              <button className="bg-dark-subtle p-1 rounded">
+              <button onClick={toggleTheme} className="dark:bg-white bg-dark-subtle p-1 rounded transition">
                 <BsFillSunFill className="text-secondary" size={24} />
               </button>
             </li>
@@ -26,7 +29,7 @@ export const Navbar = () => {
               />
             </li>
             <li>
-              <Link className="text-white font-semibold text-lg" to={PathsNames.AUTH_SIGN_IN}>
+              <Link className="text-white font-semibold text-lg" to={PageRouter.AUTH_SIGN_IN}>
                 Login
               </Link>
             </li>
