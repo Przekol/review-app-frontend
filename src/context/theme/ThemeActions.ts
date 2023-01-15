@@ -16,5 +16,5 @@ export const updateThemeInLocalStorageAndClassList = (theme: Theme) => {
 };
 
 export const setTheme = (theme: Theme) => {
-  return theme === defaultTheme.theme ? Theme.LIGHT : defaultTheme.theme;
+  return theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
 };
