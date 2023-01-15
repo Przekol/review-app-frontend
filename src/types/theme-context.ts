@@ -7,12 +7,11 @@ export enum Theme {
 export interface ThemeState {
   theme: Theme;
 }
-export interface Action {
+export type ThemeAction = {
   type: 'SET_THEME';
   payload: Theme;
-}
+};
 export interface ThemeContextType {
   state: ThemeState;
-  dispatch?: Dispatch<Action>;
-  toggleTheme: () => void;
+  dispatch: Dispatch<ThemeAction>;
 }

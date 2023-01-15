@@ -9,7 +9,6 @@ export const initialState = {
 const defaultValue = {
   state: initialState,
   dispatch: () => null,
-  toggleTheme: () => null,
 };
 
 export const ThemeContext = createContext<ThemeContextType>(defaultValue);
